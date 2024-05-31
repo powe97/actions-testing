@@ -8,10 +8,7 @@ jobs:
   firstIssueReply:
     # Only when it is an issue rather than a PR
     if: |
-      !github.event.issue.pull_request &&
-      (github.event.comment.author_association == NONE ||
-      github.event.comment.author_association == FIRST_TIMER ||
-      github.event.comment.author_association == FIRST_TIME_CONTRIBUTOR)
+      !github.event.issue.pull_request 
     name: First issue reply
     runs-on: ubuntu-latest
     permissions:
