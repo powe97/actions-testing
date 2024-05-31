@@ -19,7 +19,7 @@ jobs:
         
       - name: First issue reply
         run: |
-          gh issue comment "$ISSUE" --body "$COMMENT" "Hi $(cat .github/FIRST_TIME_REPLY.md)"
+          gh issue comment "$ISSUE" --body "Hi @$USER, $(cat .github/FIRST_TIME_REPLY.md)"
         env:
           ISSUE: ${{ github.event.issue.number }}
           COMMENT: ${{ github.event.comment.id }}
