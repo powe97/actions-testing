@@ -19,8 +19,10 @@ jobs:
         
       - name: First issue reply
         run: |
+          echo "$GITHUB_CONTEXT"
           gh issue comment "$ISSUE" --body "Hi @$USER, $(cat .github/FIRST_TIME_REPLY.md)"
         env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
           ISSUE: ${{ github.event.issue.number }}
           COMMENT: ${{ github.event.comment.id }}
           USER: ${{ github.event.actor }}
