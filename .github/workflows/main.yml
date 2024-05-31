@@ -10,9 +10,7 @@ jobs:
     if: ${{ !github.event.issue.pull_request }}
     name: First issue reply
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
+    permissions: write-all
     steps:
       - name: Checkout main repository
         uses: actions/checkout@v4
@@ -20,7 +18,7 @@ jobs:
       - name: First issue reply
         run: |
           gh auth status
-          gh issue comment "$COMMENT" --body "Hi @$USER, $(cat .github/FIRST_TIME_REPLY.md)"
+          gh issue comment "$ISSUE" --body "Hi @$USER, $(cat .github/FIRST_TIME_REPLY.md)"
         env:
           ISSUE: ${{ github.event.issue.url }}
           COMMENT: ${{ github.event.comment.id }}
