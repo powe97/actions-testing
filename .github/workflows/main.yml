@@ -20,7 +20,7 @@ jobs:
           gh auth status
           gh issue comment "$ISSUE" --body "Hi @$USER, $(cat .github/FIRST_TIME_REPLY.md)"
         env:
-          ISSUE: ${{ github.event.issue.url }}
+          ISSUE: ${{ github.event.issue.number }}
           COMMENT: ${{ github.event.comment.id }}
           USER: ${{ github.event.actor }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
