@@ -24,6 +24,6 @@ jobs:
         env:
           ISSUE: ${{ github.event.issue.number }}
           COMMENT: ${{ github.event.comment.id }}
-          USERNAME: ${{ github.event.actor }}
+          USERNAME: ${{ github.event.comment.user.login }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: sh
