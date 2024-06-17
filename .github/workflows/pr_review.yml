@@ -12,7 +12,7 @@ jobs:
     if: github.event.review.state == 'APPROVED'
     runs-on: ubuntu-latest
     env:
-      GITHUB_ENV: ${{ toJSON(github) }}
+      GITHUB_ENV: ${{ toJSON(github.event.pull_request) }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: First issue reply
