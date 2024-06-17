@@ -1,0 +1,17 @@
+on:
+  pull_request_review:
+    types:
+      - submitted
+
+# Taken from https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#running-a-workflow-when-a-pull-request-is-approved
+jobs:
+  approved:
+    if: github.event.review.state == 'APPROVED'
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_ENV: ${{ github }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: First issue reply
+        run: |
+          echo "$GITHUB_ENV"
