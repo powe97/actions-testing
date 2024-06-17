@@ -1,4 +1,4 @@
-name: First issue reply
+name: PR review trigger
 
 on:
   pull_request_review:
