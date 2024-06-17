@@ -12,9 +12,9 @@ jobs:
     if: github.event.review.state == 'APPROVED'
     runs-on: ubuntu-latest
     env:
-      GITHUB_ENV: ${{ github.event }}
+      GITHUB_ENV: ${{ toJSON(github) }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: First issue reply
         run: |
-          echo "$GITHUB_ENV"
+          echo "$GITHUB_ENV" | jq
