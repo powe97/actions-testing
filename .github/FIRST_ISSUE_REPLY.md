@@ -1,4 +1,4 @@
-Thank you for your interest in the Submitty open source project.
+Thank you for your interest in the Github Actions Testing open source project.
 
 We welcome contributions from new developers!
 
