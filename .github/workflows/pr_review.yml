@@ -22,6 +22,7 @@ jobs:
     steps:
       - name: First issue reply
         run: |
+          gh auth login --with-token <<< "$GH_TOKEN"
           echo "This is $PR_REPO/$PR_NUMBER"
           ID="$(gh project item-list -L 1000 --owner "$PR_REPO_OWNER" "$PROJECT_NUMBER" --format json --jq '.items[] | select(.content.type = "PullRequest") | select(.content.repository == "$PR_REPO") | select(.content.number == "$PR_NUMBER") | .id')"
           echo "ID #: $ID"
