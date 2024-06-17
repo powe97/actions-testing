@@ -12,9 +12,10 @@ jobs:
     if: github.event.review.state == 'APPROVED'
     runs-on: ubuntu-latest
     env:
-      GITHUB_ENV: ${{ toJSON(github.event.pull_request) }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      PR_REPO: ${{ github.event.pull_request.base.repo.full_name }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: First issue reply
         run: |
-          echo "$GITHUB_ENV" | jq
+          echo "This is $PR_REPO/$PR_NUMBER"
