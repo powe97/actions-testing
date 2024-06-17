@@ -18,7 +18,7 @@ jobs:
       PR_REPO: ${{ github.event.pull_request.base.repo.full_name }}
       PR_REPO_OWNER: ${{ github.event.pull_request.base.repo.owner.login }}
       PROJECT_NUMBER: "1"
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
     steps:
       - name: First issue reply
         run: |
