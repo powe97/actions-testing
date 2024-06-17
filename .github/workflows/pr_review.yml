@@ -1,7 +1,10 @@
+name: First issue reply
+
 on:
   pull_request_review:
     types:
       - submitted
+  workflow_dispatch:
 
 # Taken from https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#running-a-workflow-when-a-pull-request-is-approved
 jobs:
