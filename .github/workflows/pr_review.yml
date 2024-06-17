@@ -6,6 +6,8 @@ on:
       - submitted
   workflow_dispatch:
 
+permissions: write-all
+
 # Taken from https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#running-a-workflow-when-a-pull-request-is-approved
 jobs:
   approved:
@@ -14,8 +16,12 @@ jobs:
     env:
       PR_NUMBER: ${{ github.event.pull_request.number }}
       PR_REPO: ${{ github.event.pull_request.base.repo.full_name }}
+      PR_REPO_OWNER: ${{ github.event.pull_request.base.repo.owner.login }}
+      PROJECT_NUMBER: "2"
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: First issue reply
         run: |
           echo "This is $PR_REPO/$PR_NUMBER"
+          ID="$(gh project item-list -L 1000 --owner "$PR_REPO_OWNER" "$PROJECT_NUMBER" --format json --jq '.items[] | select(.content.type = "PullRequest") | select(.content.repository == "$PR_REPO") | select(.content.number == "$PR_NUMBER") | .id')"
+          echo "ID #: $ID"
